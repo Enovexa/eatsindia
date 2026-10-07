@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu | Eats India</title>
+<link rel="icon" type="image/webp" href="logo.webp">
+<link rel="apple-touch-icon" href="logo.webp">
+<meta name="description" content="Browse the Eats India menu: dosas, idlis, Kerala favourites, biryani and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Marcellus&family=Playfair+Display:wght@400;500&family=Mrs+Saint+Delafield&family=Outfit:wght@400;500&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d1838;
+  --violet:#6b62b8;
+  --mist:#efecf9;
+  --saffron:#f0a81c;
+  --white:#fff;
+  --maroon:#7a3b3b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--mist);line-height:1.6}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px}
+
+/* Info cards */
+.cards{background:var(--mist);padding:5rem 1.5rem}
+.cards-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.card h2{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.7rem;line-height:1.1;margin-bottom:.8rem}
+.card-img{display:block;aspect-ratio:2/1;overflow:hidden;border-bottom:3px solid var(--violet);margin-bottom:1.1rem}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.card p{font-size:.95rem;color:#4a4570;max-width:42ch}
+@media(max-width:820px){.cards{padding:3.5rem 1.5rem}.cards-inner{grid-template-columns:1fr;gap:2.5rem}}
+
+/* About */
+.about{position:relative;background:var(--white);overflow:hidden}
+.about-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:6rem 1.5rem 1.5rem;display:grid;grid-template-columns:1fr 1fr}
+.about-text{max-width:560px}
+.about-kicker{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.25rem;color:#7b7699;margin-bottom:.1rem}
+.about h2{font-weight:500;font-size:clamp(2rem,4vw,2.8rem);line-height:1.1;text-transform:uppercase;color:#3b3a48;margin-bottom:1.8rem}
+.about p{color:#6b6880;font-size:1rem;margin-bottom:1.1rem;max-width:62ch}
+.signature{margin-top:2rem}
+.signature .script{font-family:'Mrs Saint Delafield',cursive;font-size:3.4rem;line-height:1;color:#3b3a48;display:block}
+.signature .name{font-weight:700;font-size:.95rem;color:#3b3a48}
+.about-img{position:absolute;top:0;right:0;bottom:0;width:50%;background:url('https://images.pexels.com/photos/9392998/pexels-photo-9392998.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 38%);mask-image:linear-gradient(to right,transparent 0,#000 38%)}
+@media(max-width:820px){
+  .about-inner{grid-template-columns:1fr;padding:3rem 1.5rem 1rem}
+  .about-img{position:relative;width:100%;height:260px;-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);mask-image:linear-gradient(to bottom,#000 60%,transparent 100%)}
+}
+
+/* Slide-in on scroll */
+.cards{overflow:hidden}
+.js .card{opacity:0;transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.js .card:nth-child(1){transform:translateX(-70px)}
+.js .card:nth-child(2){transform:translateY(60px);transition-delay:.15s}
+.js .card:nth-child(3){transform:translateX(70px);transition-delay:.3s}
+.js .card.in{opacity:1;transform:none}
+@media(max-width:820px){.js .card:nth-child(n){transform:translateY(50px);transition-delay:0s}.js .card.in:nth-child(n){transform:none}}
+
+/* Features */
+.features{background:var(--white);overflow:hidden;padding:3rem 1.5rem 4.5rem}
+.features-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.feature{border:1px solid #a8794a;border-radius:14px;padding:1.5rem 1.6rem 1.7rem}
+.feature h3{font-family:'Marcellus',Georgia,serif;font-weight:400;font-size:1.35rem;line-height:1.2;color:#1d1838;margin-bottom:.6rem}
+.feature p{font-size:.92rem;color:#6b6880;line-height:1.7}
+.js .feature{opacity:0;transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.js .feature:nth-child(1){transform:translateX(-80px)}
+.js .feature:nth-child(2){transition-delay:.15s}
+.js .feature:nth-child(3){transform:translateX(80px);transition-delay:.3s}
+.js .feature.in{opacity:1;transform:none}
+@media(max-width:820px){
+  .features{padding:1.5rem 1.5rem 3.5rem}
+  .features-inner{grid-template-columns:1fr;gap:1rem}
+  .js .feature:nth-child(n){transform:translateY(40px);transition-delay:0s}
+  .js .feature.in:nth-child(n){transform:none}
+}
+
+/* Hours */
+.hours{background:var(--white);padding:2rem 1.5rem 5rem}
+.hours-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.25fr;gap:4rem;align-items:center}
+.hours-head{display:flex;align-items:center;gap:1.4rem;margin-bottom:1.5rem}
+.hours-head svg{flex:none;width:72px;height:72px}
+.hours-kicker{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.25rem;color:#7b7699;line-height:1.2}
+.hours h2{font-weight:500;font-size:clamp(2rem,4vw,2.8rem);line-height:1.1;text-transform:uppercase;color:#3b3a48}
+.hours-text>p{color:#6b6880;max-width:52ch}
+.hours-table{width:100%;border-collapse:collapse;color:#6b6880}
+.hours-table th{text-align:left;font-weight:700;color:#4a4858;padding:.7rem 1rem;border-bottom:2px solid #dcdae4}
+.hours-table td{padding:1rem;border-bottom:1px solid #e6e4ec}
+.hours-table td:first-child{color:#4a4858;font-weight:500}
+.hours-call td{border-bottom:0}
+.hours-call a{color:#3b3a48;font-weight:700;font-size:1.15rem}
+.hours-call a:hover{text-decoration:underline}
+@media(max-width:820px){
+  .hours{padding:1rem 1.5rem 3.5rem}
+  .hours-inner{grid-template-columns:1fr;gap:2rem}
+  .hours-table th,.hours-table td{padding:.8rem .5rem}
+}
+
+/* Taste of Kerala banner */
+.taste{background:var(--white);color:#1d1838;overflow-x:hidden;padding:5rem 1.5rem}
+.taste-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.taste-img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.taste-label{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.4rem}
+.taste-label svg{width:22px;height:22px;flex:none}
+.taste h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(3rem,7vw,5rem);line-height:1.02;max-width:9ch;margin-bottom:1.4rem}
+.taste p.taste-text{font-size:1.15rem;max-width:36ch;color:#6b6880}
+.taste-copy>.reveal:nth-child(2){transition-delay:.12s}
+.taste-copy>.reveal:nth-child(3){transition-delay:.26s}
+.taste-inner>.taste-img{transition-delay:.2s}
+@media(max-width:820px){
+  .taste{padding:3.5rem 1.5rem}
+  .taste-inner{grid-template-columns:1fr;gap:2rem}
+}
+
+/* Experience section */
+.exp{background:var(--white);padding:6rem 1.5rem;overflow-x:hidden}
+.exp-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:4.5rem;align-items:center}
+.exp-img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.exp-kicker{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.25rem;color:#7b7699;margin-bottom:.4rem}
+.exp h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(2rem,4vw,3rem);line-height:1.1;color:#1d1838;margin-bottom:1.5rem}
+.exp p{color:#6b6880;font-size:1rem;line-height:1.8;margin-bottom:1.1rem}
+.exp-text>.reveal:nth-child(2){transition-delay:.12s}
+.exp-text>.reveal:nth-child(3){transition-delay:.24s}
+.exp-text>.reveal:nth-child(4){transition-delay:.36s}
+@media(max-width:820px){
+  .exp{padding:3.5rem 1.5rem}
+  .exp-inner{grid-template-columns:1fr;gap:2rem}
+  .exp-img{aspect-ratio:4/3}
+}
+
+/* Vision & Mission */
+.phil{background:#f5e9d9;padding:4.5rem 1.5rem;overflow-x:hidden}
+.phil-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr) minmax(0,1fr);gap:3rem;align-items:center}
+.phil-img{display:block;width:100%;height:100%;min-height:340px;max-height:560px;aspect-ratio:3/4;object-fit:cover;border-radius:18px}
+.phil-center{text-align:center}
+.phil-badge{width:120px;height:120px;margin:0 auto 1.6rem;position:relative}
+.phil-badge svg{width:100%;height:100%;animation:spin 22s linear infinite}
+.phil-badge .quote{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.phil-badge .quote svg{width:26px;height:26px;animation:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.phil-block+.phil-block{margin-top:2.6rem}
+.phil-label{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#a8794a;margin-bottom:1rem}
+.phil-text{font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(1.05rem,1.9vw,1.45rem);line-height:1.65;letter-spacing:.04em;text-transform:uppercase;color:#1d1838;max-width:34em;margin:0 auto}
+.js .phil .reveal{transform:translateY(55px);transition:opacity 1.3s ease,transform 1.3s cubic-bezier(.22,.61,.36,1)}
+.js .phil .reveal.in{opacity:1;transform:none}
+.phil-inner>.phil-img:first-child{transition-delay:.05s}
+.phil-center>.reveal:nth-child(1){transition-delay:.15s}
+.phil-center>.reveal:nth-child(2){transition-delay:.35s}
+.phil-center>.reveal:nth-child(3){transition-delay:.55s}
+.phil-inner>.phil-img:last-child{transition-delay:.3s}
+@media(max-width:900px){
+  .phil{padding:3.5rem 1.5rem}
+  .phil-inner{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .phil-center{grid-column:1/-1;order:-1;margin-bottom:1rem}
+  .phil-img{min-height:0;aspect-ratio:3/4}
+}
+@media(prefers-reduced-motion:reduce){.phil-badge svg{animation:none}}
+
+/* Our Values */
+.values{background:var(--ink);color:#f3ece0;padding:4rem 1.5rem;overflow-x:hidden}
+.values-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:4rem;align-items:center}
+.values-kicker{display:flex;align-items:center;gap:.7rem;color:#b9b1f2;font-weight:700;font-size:.9rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:1rem}
+.values h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(2.4rem,4.2vw,3.6rem);line-height:1.05;color:#fff;margin-bottom:1rem}
+.values-copy p{font-size:1.05rem;line-height:1.85;color:#d8d3c6;max-width:52ch;margin-bottom:1.1rem}
+.values-copy strong{color:#fff;font-weight:700}
+.values-main{position:relative;padding-bottom:1rem}
+.values-arch{position:relative}
+.values-arch img{display:block;width:100%;aspect-ratio:3/3.7;object-fit:cover;border-radius:999px 999px 24px 24px}
+.values-inner>.reveal:nth-child(1){transition-delay:0s}
+.values-text>.reveal:nth-child(2){transition-delay:.12s}
+.values-text>.reveal:nth-child(3){transition-delay:.24s}
+.values-text>.reveal:nth-child(4){transition-delay:.36s}
+.values-inner>.values-main{transition-delay:.2s}
+.js .values .reveal{transform:translateY(55px);transition:opacity 1.3s ease,transform 1.3s cubic-bezier(.22,.61,.36,1)}
+.js .values .reveal.in{opacity:1;transform:none}
+@media(max-width:1000px){
+  .values{padding:3rem 1.5rem}
+  .values-inner{grid-template-columns:1fr;gap:2.5rem}
+    .values-main{max-width:420px;margin:0 auto;width:100%}
+    }
+/* Testimonials */
+.testi{background:var(--white);padding:5rem 1.5rem;overflow-x:hidden}
+.testi-head{text-align:center;max-width:800px;margin:0 auto 3rem}
+.testi-kicker{display:flex;align-items:center;justify-content:center;gap:.7rem;color:var(--violet);font-weight:700;font-size:.9rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.9rem}
+.testi h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(2.3rem,4.6vw,3.8rem);line-height:1.05;color:var(--ink)}
+.testi-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:stretch}
+.testi-card{border:0;border-radius:26px;padding:1.7rem 1.2rem;text-align:center;display:flex;flex-direction:column;align-items:center;background:#fff;box-shadow:0 10px 32px rgba(29,24,56,.1)}
+.stars{display:flex;gap:.15rem;color:var(--saffron);margin-bottom:1rem}
+.stars svg{width:16px;height:16px}
+.testi-quote{font-size:.93rem;line-height:1.65;color:#3b3a58;margin-bottom:1.3rem;flex:1}
+.testi-avatar{width:56px;height:56px;border-radius:50%;background:var(--violet);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.5rem;margin-bottom:.8rem}
+.testi-name{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);font-weight:500}
+.testi-name span{color:var(--ink);text-transform:none;letter-spacing:.02em}
+.js .testi .reveal{transform:translateY(55px);transition:opacity 1.3s ease,transform 1.3s cubic-bezier(.22,.61,.36,1)}
+.js .testi .reveal.slide-left{transform:translateX(-130px)}
+.js .testi .reveal.slide-right{transform:translateX(130px)}
+.js .testi .reveal.in{opacity:1;transform:none}
+.testi-grid>.reveal:nth-child(2){transition-delay:.15s}
+.testi-grid>.reveal:nth-child(3){transition-delay:.3s}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){
+  .testi{padding:3.5rem 1.5rem}
+  .testi-grid{grid-template-columns:1fr;gap:1.2rem}
+}
+
+/* CTA bar */
+.cta{position:relative;background:linear-gradient(90deg,rgba(18,14,36,.85) 0%,rgba(18,14,36,.65) 100%),url('https://images.pexels.com/photos/941869/pexels-photo-941869.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;color:var(--white);padding:4.5rem 1.5rem;overflow-x:hidden}
+.cta-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.1;margin-bottom:.6rem}
+.cta p{font-size:1.05rem;line-height:1.7;color:#f1eefb;max-width:56ch}
+.cta .btn-light{display:inline-block;flex:none;padding:.95rem 2.4rem;background:var(--white);color:var(--ink);font-weight:700;font-size:1rem;letter-spacing:.03em;border-radius:999px;transition:transform .25s ease,box-shadow .25s ease}
+.cta .btn-light:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.cta-inner>.reveal:nth-child(2){transition-delay:.15s}
+@media(max-width:760px){
+  .cta{padding:3.2rem 1.5rem}
+  .cta-inner{flex-direction:column;align-items:flex-start;gap:1.5rem}
+}
+
+/* Menu categories */
+.menu-cats{background:var(--white);padding:1.2rem 1.5rem;border-bottom:1px solid #eceaf3}
+.menu-cats ul{max-width:1400px;margin:0 auto;list-style:none;display:flex;align-items:center;gap:clamp(.9rem,1.7vw,2rem);overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.menu-cats ul::-webkit-scrollbar{display:none}
+.menu-cats li:first-child{margin-left:auto}
+.menu-cats li:last-child{margin-right:auto}
+.menu-cats a{display:block;font-weight:700;font-size:clamp(.72rem,.95vw,.92rem);color:var(--ink);padding:.5rem 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.menu-cats a:hover,.menu-cats a.active{color:var(--violet);border-color:var(--violet)}
+@media(max-width:760px){.menu-cats ul{gap:1.4rem}.menu-cats a{font-size:.9rem}}
+
+/* Footer */
+.footer{background:var(--ink);color:#d9d6ea;padding:4.5rem 1.5rem 0}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.3fr .8fr 1.2fr 1.2fr;gap:3rem}
+.footer img{height:72px;width:auto;display:block;filter:brightness(0) invert(1);margin-bottom:1rem}
+.footer h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.5rem;color:var(--white);margin-bottom:1rem}
+.footer p,.footer li{font-size:.95rem;line-height:1.7}
+.footer ul{list-style:none}
+.footer li{margin-bottom:.45rem}
+.footer a{transition:color .2s}
+.footer a:hover{color:var(--white);text-decoration:underline}
+.footer .footer-about{max-width:32ch}
+.footer .footer-bottom{max-width:1200px;margin:3.5rem auto 0;padding:1.4rem 0;border-top:1px solid rgba(255,255,255,.15);font-size:.88rem;color:#a9a5c4;text-align:center}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;gap:2.5rem}}
+@media(max-width:560px){.footer{padding-top:3.5rem}.footer-inner{grid-template-columns:1fr}}
+
+.footer-inner>.reveal:nth-child(2){transition-delay:.12s}
+.footer-inner>.reveal:nth-child(3){transition-delay:.24s}
+.footer-inner>.reveal:nth-child(4){transition-delay:.36s}
+.js .hours-table.reveal{transition-delay:.2s}
+
+/* Why choose us */
+.why{background:#f0ebe6;padding:5.5rem 1.5rem}
+.why-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem 4.5rem;align-items:start}
+.why img{display:block;width:100%;object-fit:cover}
+.why-img-square{aspect-ratio:1/1;max-width:540px}
+.why-head{align-self:center}
+.why-kicker{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.25rem;color:#7b7699;margin-bottom:.4rem}
+.why h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(1.9rem,3.2vw,2.7rem);line-height:1.25;color:#1d1838}
+.why-img-wide{aspect-ratio:3.4/1;max-width:540px}
+.why-copy{padding:2.2rem 0 0 4rem;max-width:34rem}
+.why-copy p{color:#2f2b4d;font-size:1.05rem;line-height:1.7}
+.why-img-tall{aspect-ratio:1/1.05;max-width:520px}
+.why-inner>.reveal:nth-child(2){transition-delay:.15s}
+.why-inner>.reveal:nth-child(4){transition-delay:.15s}
+@media(max-width:820px){
+  .why{padding:3.5rem 1.5rem}
+  .why-inner{grid-template-columns:1fr;gap:2rem}
+  .why-copy{padding:1.5rem 0 0}
+  .why-img-square,.why-img-wide,.why-img-tall{max-width:none}
+  .why-img-wide{aspect-ratio:16/9}
+}
+
+/* About fade-up */
+.js .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.about-text>.reveal:nth-child(2){transition-delay:.12s}
+.about-text>.reveal:nth-child(3){transition-delay:.24s}
+.about-text>.reveal:nth-child(4){transition-delay:.36s}
+.about-text>.reveal:nth-child(5){transition-delay:.48s}
+/* Slide-in from sides on scroll */
+.why,.hours,.about,.taste,.footer{overflow-x:hidden}
+.js .reveal.slide-left{transform:translateX(-110px)}
+.js .reveal.slide-right{transform:translateX(110px)}
+.js .reveal.slide-left.in,.js .reveal.slide-right.in{opacity:1;transform:none}
+@media(max-width:820px){
+  .js .reveal.slide-left{transform:translateX(-50px)}
+  .js .reveal.slide-right{transform:translateX(50px)}
+}
+@media(prefers-reduced-motion:reduce){.js .reveal.slide-left,.js .reveal.slide-right{opacity:1;transform:none;transition:none}}
+.js .reveal-fade{opacity:0;transition:opacity 1.6s ease}
+.js .reveal-fade.in{opacity:1}
+
+/* Top bar */
+.topbar{max-height:48px;overflow:hidden;opacity:1;transition:max-height .35s ease,opacity .25s ease}
+.nav.scrolled .topbar{max-height:0;opacity:0}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:.55rem 1.5rem;display:flex;justify-content:flex-end;gap:1.8rem;font-size:.9rem}
+.topbar a{opacity:.9;transition:opacity .2s}
+.topbar a:hover{opacity:1}
+
+/* Navbar */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;color:var(--white);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center}
+.brand img{height:84px;width:auto;display:block;filter:invert(1) hue-rotate(180deg)}
+.links{display:flex;gap:2rem;list-style:none;align-items:center}
+.links a{font-weight:500;padding:.4rem 0;opacity:.9;transition:opacity .2s}
+.links a:hover,.links a.active{opacity:1}
+.nav-overlay{display:none}
+.toggle{display:none;background:none;border:0;color:var(--white);font-size:1.6rem;cursor:pointer}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;container-type:size}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,14,36,.82) 0%,rgba(18,14,36,.55) 55%,rgba(18,14,36,.3) 100%)}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:15rem 1.5rem 4rem}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(2.5rem,5vw,3.5rem);line-height:1;letter-spacing:0;margin-bottom:1.4rem;max-width:18ch;color:var(--white)}
+.hero p{font-size:1.2rem;max-width:46ch;color:#ece9f7}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.hero h1,.hero p{opacity:0;animation:fadeUp 1s cubic-bezier(.22,.61,.36,1) forwards}
+.hero p{animation-delay:.25s}
+
+@media(max-width:820px){
+  .topbar-inner{justify-content:space-between;gap:1rem;font-size:.8rem;padding:.5rem 1.5rem}
+  .toggle{display:block;position:relative;z-index:3;width:44px;height:44px;line-height:1}
+  .toggle[aria-expanded="true"]{color:#2a2438;font-size:1.5rem}
+  .nav-overlay{display:block;position:fixed;inset:0;z-index:1;background:rgba(18,14,36,.5);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+  .nav-overlay.open{opacity:1;visibility:visible}
+  .links{display:flex;position:fixed;top:0;right:0;bottom:0;z-index:2;width:min(78vw,300px);background:#fff;flex-direction:column;gap:0;padding:5.5rem 1.8rem 1.5rem;align-items:stretch;transform:translateX(100%);visibility:hidden;transition:transform .35s ease,visibility .35s;box-shadow:-8px 0 30px rgba(0,0,0,.25)}
+  .links.open{transform:none;visibility:visible}
+  .links li{border-bottom:1px solid #eeecf5}
+  .links a{display:block;padding:.95rem 0;color:#2a2438;opacity:1}
+  .links a.active{color:var(--violet)}
+  .hero{min-height:90vh}
+  .hero-inner{padding-top:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.hero h1,.hero p{animation:none;opacity:1}.hero-bg{animation:none}.js .card:nth-child(n){opacity:1;transform:none;transition:none}.js .reveal,.js .reveal-fade,.js .feature:nth-child(n){opacity:1;transform:none;transition:none}}
+
+/* Menu sections */
+.menu-section{position:relative;overflow:hidden;background:#fff;padding:4.5rem 1.5rem 5.5rem;font-family:'Lora',Georgia,serif}
+.menu-section::before{content:"";position:absolute;inset:0;background:url('logo.webp') center/min(620px,80%) no-repeat;opacity:.07;pointer-events:none}
+.menu-section-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
+.menu-banner{position:relative;text-align:center;color:#fff;padding:2rem 1rem 2.2rem;margin-bottom:3rem;background:linear-gradient(rgba(18,14,36,.68),rgba(18,14,36,.68)),var(--img,none) center/cover no-repeat,linear-gradient(120deg,var(--c1,#1d1838),var(--c2,#4a4196))}
+.menu-num{display:block;font-size:1rem;letter-spacing:.1em;margin-bottom:.2rem}
+.menu-title{font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.15;color:#fff}
+.dish-list{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 3.5rem}
+.dish{display:block;padding:1.5rem 0 1.6rem;border-bottom:1px dashed #cfcdd8}
+.dish-body{min-width:0}
+.dish-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.2rem}
+.dish-head h3{font-family:'Lora',Georgia,serif;font-weight:700;font-size:1.08rem;line-height:1.35;color:#1d1838}
+.dish-line{display:none}
+.dish-price{font-weight:700;font-size:1.08rem;color:#6b62b8;white-space:nowrap}
+.dish p{margin-top:.5rem;font-style:italic;font-size:.93rem;color:#5c5876;line-height:1.6;max-width:none}
+@media(max-width:860px){.dish-list{grid-template-columns:1fr}.menu-section{padding:3.5rem 1.25rem 4.5rem}.menu-banner{padding:1.6rem 1rem 1.8rem;margin-bottom:2rem}}
+
+.js .dish{opacity:0;transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.js .dish:nth-child(odd){transform:translateX(-80px)}
+.js .dish:nth-child(even){transform:translateX(80px)}
+.js .dish.in{opacity:1;transform:none}
+@media(max-width:860px){.js .dish:nth-child(n){transform:translateX(-50px)}.js .dish.in:nth-child(n){transform:none}}
+@media(prefers-reduced-motion:reduce){.js .dish,.js .dish:nth-child(n){opacity:1;transform:none;transition:none}}
+.js .menu-section{display:none}
+.js .menu-section.active{display:block}
+.menu-empty{display:none;background:#fff;padding:5rem 1.5rem 6rem;text-align:center;font-family:'Lora',Georgia,serif;font-style:italic;color:#5c5876;font-size:1.1rem}
+.menu-empty.active{display:block}
+#starters-and-small-plates .menu-banner{--c1:#1d1838;--c2:#4a4196;--img:url('https://images.pexels.com/photos/36170557/pexels-photo-36170557.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#idli-dosa-and-indian-breads .menu-banner{--c1:#0f3d3e;--c2:#1f7a6f;--img:url('https://images.pexels.com/photos/20422129/pexels-photo-20422129.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#indo-chinese .menu-banner{--c1:#4a1020;--c2:#a1283c;--img:url('https://images.pexels.com/photos/28445828/pexels-photo-28445828.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#curries-gravys-and-sides .menu-banner{--c1:#5a2a08;--c2:#c46a1a;--img:url('https://images.pexels.com/photos/33643313/pexels-photo-33643313.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#rice-and-mains .menu-banner{--c1:#1f3a1c;--c2:#5b8a3a;--img:url('https://images.pexels.com/photos/6260921/pexels-photo-6260921.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#desserts .menu-banner{--c1:#5a1f43;--c2:#c2517f;--img:url('https://images.pexels.com/photos/602211/dessert-food-restaurant-diner-602211.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#beverages .menu-banner{--c1:#3a2418;--c2:#8a5a3a;--img:url('https://images.pexels.com/photos/31336111/pexels-photo-31336111.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#mocktails .menu-banner{--c1:#0b3a5a;--c2:#2b9ac4;--img:url('https://images.pexels.com/photos/29138466/pexels-photo-29138466.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+#cocktails .menu-banner{--c1:#2a0f3d;--c2:#7a2fa0;--img:url('https://images.pexels.com/photos/36189465/pexels-photo-36189465.jpeg?auto=compress&cs=tinysrgb&w=1400')}
+.cats-hint{display:none}
+@media(max-width:760px){
+.menu-cats .cats-hint{display:block;text-align:center;margin-top:.55rem;font-size:.78rem;font-weight:500;color:#6b62b8;letter-spacing:.02em}
+.cats-hint span{display:inline-block;margin-left:.2rem;animation:hintNudge 1.1s ease-in-out infinite}
+.menu-cats.scrolled .cats-hint,.menu-cats.at-end .cats-hint{display:none}
+}
+@keyframes hintNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@media(prefers-reduced-motion:reduce){.cats-hint span{animation:none}}
+.hero-bg{isolation:isolate;overflow:hidden}
+.hero-bg::before,.hero-bg::after{content:"";position:absolute;left:50%;top:50%;width:100vh;height:100vw;width:100cqh;height:100cqw;transform:translate(-50%,-50%) rotate(90deg);background:url('https://images.pexels.com/photos/10078274/pexels-photo-10078274.jpeg?auto=compress&cs=tinysrgb&h=1800') center/cover no-repeat}
+.hero-bg::after{display:none}
+.hero-bg::before{background-position:center 35%}
+@media(max-aspect-ratio:1/1){.hero-bg::before,.hero-bg::after{left:0;top:0;width:100%;height:100%;transform:none}}
+.menu-head{background:var(--white);text-align:center;padding:3.5rem 1.5rem 1.4rem}
+.menu-head-kicker{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.25rem;color:#7b7699;line-height:1.2}
+.menu-head h2{font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;text-transform:uppercase;letter-spacing:.04em;color:#3b3a48;margin-top:.15rem}
+.menu-head h2::after{content:"";display:block;width:64px;height:2px;background:var(--saffron);margin:.9rem auto 0}
+.menu-head-sub{margin-top:.8rem;color:#6b6880;font-size:.98rem}
+@media(max-width:760px){.menu-head{padding:2.4rem 1.25rem 1rem}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="nav-overlay" id="overlay"></div>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="tel:0870829313">Phone: (08) 7082 9313</a>
+      <a href="mailto:eatsindia@yahoo.com">Email: eatsindia@yahoo.com</a>
+    </div>
+  </div>
+  <nav class="nav-inner" aria-label="Main">
+    <a href="index.html" class="brand"><img src="logo.webp" alt="Eats India - Authentic South Indian Restaurant" width="500" height="400"></a>
+    <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="links">&#9776;</button>
+    <ul class="links" id="links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="reservation.html">Reservation</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+    <h1>Our menu, made fresh every day.</h1>
+    <p>From crisp dosas and soft idlis to Kerala favourites, fragrant biryani and hearty curries, explore the dishes we cook with traditional recipes.</p>
+    </div>
+  </section>
+  <div class="menu-head">
+    <p class="menu-head-kicker">Eats India</p>
+    <h2>Explore Our Menu</h2>
+    <p class="menu-head-sub">Choose a category to see our dishes</p>
+  </div>
+  <nav class="menu-cats reveal" aria-label="Menu categories">
+      <ul>
+        <li><a href="#starters-and-small-plates" class="active">Starters &amp; Small Plates</a></li>
+        <li><a href="#idli-dosa-and-indian-breads">Idli, Dosa &amp; Indian Breads</a></li>
+        <li><a href="#indo-chinese">Indo Chinese</a></li>
+        <li><a href="#curries-gravys-and-sides">Curries, Gravys And Sides</a></li>
+        <li><a href="#rice-and-mains">Rice &amp; Mains</a></li>
+        <li><a href="#desserts">Desserts</a></li>
+        <li><a href="#beverages">Beverages</a></li>
+        <li><a href="#mocktails">Mocktails</a></li>
+        <li><a href="#cocktails">Cocktails</a></li>
+      </ul>
+  <p class="cats-hint" aria-hidden="true">Swipe for more categories <span>&rsaquo;&rsaquo;</span></p>
+  </nav>
+  <section class="menu-section" id="starters-and-small-plates" aria-labelledby="starters-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 1 &ndash;</span><h2 id="starters-title" class="menu-title">Starters &amp; Small Plates</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Samosa (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.50</span></div>
+            <p>Crispy Golden Pastry Filled With Potatoes &amp; Peas, Deep-Fried To Perfection</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Samosa Chaat</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$11.50</span></div>
+            <p>Samosas Topped With Tangy Chutneys, Spiced Yogurt &amp; Crunchy Sev</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Sundal Chaat</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.50</span></div>
+            <p>Chickpeas With Onion, Tomatoes, Green Chillies &amp; Spiced Yogurt</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Medu Vada (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.00</span></div>
+            <p>Crispy Lentil Fritters Served With Coconut Chutney &amp; Sambar</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Thayir Vada</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.50</span></div>
+            <p>Crispy Vada Soaked In Creamy Spiced Yogurt &amp; Garnished With Tempered Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Paruppu Vada</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.50</span></div>
+            <p>Crispy Lentil Fritters Served With Chutney</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kuzhi Paniyaram (4 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.50</span></div>
+            <p>Crispy Rice-Lentil Dumplings Made In A Special Pan, Served With Chutney</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chilli Bajji (Milagai Bajji) (3 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.50</span></div>
+            <p>Large Green Chillies Dipped In Batter And Deep-Fried To Crispy Perfection</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Onion Bajji (6 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.50</span></div>
+            <p>Sliced Onions Dipped In Spiced Gram Flour Batter And Deep-Fried</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Potato Bajji (6 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.50</span></div>
+            <p>Thin Potato Slices Coated In Besan Batter And Fried Golden</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Egg Puffs (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.50</span></div>
+            <p>Flaky Pastry Filled With Spiced Boiled Egg And Caramelised Onion</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Pani Poori (6 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.00</span></div>
+            <p>Mini Poori Filled With Mashed Potatoes, Tangy Water And Chickpeas</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Dahi Poori (6 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$11.50</span></div>
+            <p>Mini Poori Filled With Chilled Yogurt, Tamarind And Pomegranate Pearls</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Paneer 65</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.50</span></div>
+            <p>Chargrilled Masala Cottage Cheese</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken 65</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.00</span></div>
+            <p>Chennai Spicy Fried Chicken With Curry Leaves And Black Pepper</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken Manchurian</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$15.00</span></div>
+            <p>Fried Chicken Tossed In A Spicy Indo-Chinese Sauce With Garlic And Peppers</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Paneer Manchurian</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.00</span></div>
+            <p>Fried Paneer Tossed In A Spicy Indo-Chinese Sauce With Garlic And Peppers</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Veg Manchurian</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.00</span></div>
+            <p>Fried Veggies Tossed In A Spicy Indo-Chinese Sauce With Garlic And Peppers</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Pazhampuri (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$8.00</span></div>
+            <p>Ripe Bananas Dipped In Sweetened Batter And Deep-Fried Golden</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Thatukkada Chicken Fry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.50</span></div>
+            <p>Street-Style Spicy Chicken Fry With Shallots And Coconut Oil</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken Tandoori Skewers (3 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.50</span></div>
+            <p>Juicy Chargrilled Chicken Marinated In Aromatic Spices</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="idli-dosa-and-indian-breads" aria-labelledby="idli-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 2 &ndash;</span><h2 id="idli-title" class="menu-title">Idli, Dosa &amp; Indian Breads</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Idli (3 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.50</span></div>
+            <p>Flummy Steamed Rice &amp; Lentil Cakes, Served With Sambar &amp; Chutney</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Podi Idli (3 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$12.00</span></div>
+            <p>Steamed Idli Tossed In Spicy Gun-Powder</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Sambar Idli (3 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$12.00</span></div>
+            <p>Steamed Idli Soaked In Hearty Breakfast Sambar</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Poori Masala (3 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$12.00</span></div>
+            <p>Fluffy Deep-Fried Poori Served With Spiced Potato Masala</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Plain Dosa</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.00</span></div>
+            <p>Crispy, Golden Rice Crepe</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Podi Dosa</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.50</span></div>
+            <p>Dosa Coated With Home-Made Gunpowder</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Ghee Dosa</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$12.00</span></div>
+            <p>Dosa Coated And Drizzled With Ghee</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Masala Dosa</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.00</span></div>
+            <p>Dosa Stuffed With Potatoe And Green Pea Masala</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Egg Dosa</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.00</span></div>
+            <p>Dosa Layered With Egg Omelette</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Cheese Dosa</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.00</span></div>
+            <p>Dosa Generous Serve Of Melted Cheese</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Vegetable Uttapam</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$12.00</span></div>
+            <p>Loaded With Shredded Carrot, Capsicum, Onion &amp; Green Chillies</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Egg Kothu Parotta</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$18.00</span></div>
+            <p>Stir-Fried Parotta With Egg &amp; Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken Kothu Parotta</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$20.00</span></div>
+            <p>Stir-Fried Parotta With Chicken Pieces &amp; Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Beef Kothu Parotta</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$21.00</span></div>
+            <p>Stir-Fried Parotta With Beef Pieces &amp; Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Plain Parotta (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.00</span></div>
+            <p>Layered South-Indian Flat Bread</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Plain Naan</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$5.00</span></div>
+            <p>Soft Fluffy Indian Flat Bread</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Garlic Naan</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$5.50</span></div>
+            <p>Naan Infused With Garlic Butter And Herbs</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Cheese Naan</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.00</span></div>
+            <p>Naan Stuffed With Melted Cheese</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Bullet Naan</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.50</span></div>
+            <p>Soft Naan Infused With Fiery Green Chillies, And Crushed Garlic With Melted Cheese</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chappathi (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.00</span></div>
+            <p>Whole Wheat Flat Bread</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Coconut Poli (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.00</span></div>
+            <p>Sweet Flatbread Stuffed With Cardamon, Coconut And Jaggery</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Paruppu Poli (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.50</span></div>
+            <p>Sweet Flatbread Stuffed With Sweet Lentil &amp; Jaggery</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="indo-chinese" aria-labelledby="indo-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 3 &ndash;</span><h2 id="indo-title" class="menu-title">Indo Chinese</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken Fried Rice</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$16.50</span></div>
+            <p>Wok-Tossed Rice With Juicy Chicken, Vegetables And Soy-Based Seasoning</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Veg Fried Rice</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.00</span></div>
+            <p>Fragrant Stir-Fried Rice With Fresh Mixed Vegetables And Subtle Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Egg Fried Rice</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$15.50</span></div>
+            <p>Fluffy Rice Tossed With Scrambled Eggs, Veggies And Savoury Sauces</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken Noodles</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$16.50</span></div>
+            <p>Stir-Fried Noodles With Tender Chicken, Vegetables And Indo-Chinese Flavours</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Veg Noodles</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.50</span></div>
+            <p>Hakka-Style Noodles Loaded With Colourful Veggies And Tossed In Soy-Based Sauce</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Egg Noodles</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$15.50</span></div>
+            <p>Noodles Stir-Fried With Eggs, Vegetables And A Hint Of Spice</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="curries-gravys-and-sides" aria-labelledby="curries-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 4 &ndash;</span><h2 id="curries-title" class="menu-title">Curries, Gravys And Sides</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Mutton Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$20.00</span></div>
+            <p>Spicy Slow Cooked Mutton Curry In A Coconut-Fennel Gravy</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Mutton Chukka</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$19.00</span></div>
+            <p>Dry-Fried Mutton Slow-Cooked With Aromatic Spices, Black Pepper And Curry Leaves</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kerala Beef Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$22.00</span></div>
+            <p>Fiery Black Pepper Beef Gravy With Crispy Curry Leaves</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kappa Beef Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$25.00</span></div>
+            <p>Spicy Beef Curry With Steamed Tapioca</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Beef Ularthiyathu</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$19.00</span></div>
+            <p>Tender Beef Slow-Roasted With Coconut Slivers, Black Pepper And Spices Until Dry</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken Chukka</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$18.00</span></div>
+            <p>Dry-Roasted Chicken With Aromatic Spices, Black Pepper And Curry Leaves</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Butter Chicken</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$19.00</span></div>
+            <p>Classic Butter Chicken With A Hint Of Thickened Cream (Eats India Style)</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chicken Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$20.00</span></div>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kerala Fish Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$22.00</span></div>
+            <p>Fish Curry Made With Tamarind In A Spicy Coconut Gravy</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kappa Fish Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$26.00</span></div>
+            <p>Spicy Fish Curry Served With Steamed Tapioca</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Curry Leaf Prawn Masala</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$18.00</span></div>
+            <p>Coastal Style Prawns Tempered With Curry Leaves And Black Pepper</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Egg Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$16.00</span></div>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Palak Paneer</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$15.50</span></div>
+            <p>Creamy Spinach Curry Cooked With Soft Paneer, Flavoured With Garlic &amp; Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Paneer Butter Masala</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$15.50</span></div>
+            <p>Soft Paneer Cubes In A Creamy Masala With A Hint Of Coconut Cream</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Aloo Gobi</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.00</span></div>
+            <p>Potatoes And Cauliflower Cooked With Spices, Turmeric And Aromatic Herbs</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Dal Makhani</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.00</span></div>
+            <p>Creamy Lentil Curry Made With Slow-Cooked Black Lentils And Aromatic Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Eggplant Curry</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.50</span></div>
+            <p>Smoked Eggplant Curry In A Rich Tamarind Base</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kadala Curry (Chickpea)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.50</span></div>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Vegetable Stew</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$12.00</span></div>
+            <p>Mild And Creamy Kerala-Style Curry Made With Mixed Vegetables And Coconut Milk</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>King Fish Fry (1 pc)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.50</span></div>
+            <p>Crispy Pan-Fried Fish Marinated In A Blend Of South-Indian Spices &amp; Curry Leaves</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Double Omelette</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.50</span></div>
+            <p>Fluffy Pan Fried Egg Omelette Seasoned With Onions, Green Chillies And Spices</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Egg Roast</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$10.00</span></div>
+            <p>Hard Boiled Eggs Cooked In A Thick Onion-Tomato Masala Served Dry</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="rice-and-mains" aria-labelledby="rice-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 5 &ndash;</span><h2 id="rice-title" class="menu-title">Rice &amp; Mains</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Pepper Mutton Biryani</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$26.00</span></div>
+            <p>Traditional Chennai Style Biryani, Served With Raita And Pappad</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Thalassery Chicken Biryani</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$25.00</span></div>
+            <p>Kerala Short Grain Rice Biriyani With Coastal Spices Served With Raita And Pappad</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kerala Kappa Biriyani</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$26.50</span></div>
+            <p>Kappa &amp; Tender Beef Cooked Together In A Fragrant &amp; Flavourful Biriyani Style</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Vegetable Biriyani</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$22.00</span></div>
+            <p>Fragrant Rice Cooked With Mixed Vegetables, Served With Raita And Pappad</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Pulao</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.50</span></div>
+            <p>Fragrant Rice With Saffron, Nuts And Dried Fruits</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Plain Rice</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$4.50</span></div>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Coconut Puttu Kadalai</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$13.00</span></div>
+            <p>Steamed Rice Flour Cylinders Served With Spicy Black Chickpea Curry</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Mango Puttu</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$11.00</span></div>
+            <p>Steamed Rice Flour Layered With Sweet And Tangy Ripe Mango Chunks Served Spicy Black Chickpea Curry</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Beef Puttu</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$20.00</span></div>
+            <p>Fluffy Puttu Layer With Spicy Tender Beef Masala</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Pazhampuri with Beef (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$25.00</span></div>
+            <p>Fried Ripe Plantains With Spicy, Tender Kerala Style Beef Fry</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="desserts" aria-labelledby="desserts-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 6 &ndash;</span><h2 id="desserts-title" class="menu-title">Desserts</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Fruit Custard</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$5.00</span></div>
+            <p>Chilled Creamy Custard Mixed With Seasonal Fresh Fruits And A Hint Of Cardamom</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Kulfi</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$5.00</span></div>
+            <p>Thickened Milk Popsicle, With Flavoured Cardamom, Saffron &amp; Pistachio</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Bun-Butter Jam</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$4.00</span></div>
+            <p>Soft Butter Toasted Bun Slathered With Sweet Jam</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Gulab Jamun (2 pcs)</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.00</span></div>
+            <p>Deep-Fried Dough Balls Soaked In Sugar Syrup With (Vanilla Ice-Cream +$1.50)</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Fruit Falooda</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.50</span></div>
+            <p>Layered Rose Milk Dessert Drink With Vermicelli, Chia Seeds, Fruits, Nuts And Ice-Cream</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="beverages" aria-labelledby="beverages-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 7 &ndash;</span><h2 id="beverages-title" class="menu-title">Beverages</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Classic Chai</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$4.50</span></div>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Masala Chai</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$5.00</span></div>
+            <p>Tea Infused With Ginger, Cardamom Other Herbal Species</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Filter Coffee</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$5.00</span></div>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Chukku Kaappi</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$4.50</span></div>
+            <p>Dry Ginger And Spice Infused Black Coffee</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Spiced Buttermilk</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$4.00</span></div>
+            <p>Refreshing &amp; Tangy Yogurt Drink</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Sulaimani</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$3.00</span></div>
+            <p>Fragrant Black Tea Infused With Mint &amp; Cardamom</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Rose Milk</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$6.00</span></div>
+            <p>Sweet Milk With Rose Syrup</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Mango Lassi</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.00</span></div>
+            <p>Thick Creamy Yogurt And Mango Pulp Drink</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Soft Drinks</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$3.00</span></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="mocktails" aria-labelledby="mocktails-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 8 &ndash;</span><h2 id="mocktails-title" class="menu-title">Mocktails</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Tropical Sunrise</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.90</span></div>
+            <p>A Refreshing Blend Of Orange Juice, Pineapple Juice And A Splash Of Soda</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Virgin Mojito</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.50</span></div>
+            <p>A Classic Mocktail Made With Fresh Mint Leaves, Lime Juice, Sugar, Soda Water And A Hint Of Sweetness</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Coconut Cooler</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$8.00</span></div>
+            <p>A Delightful Blend Of Coconut Water, Lime Juice And A Splash Of Pineapple</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Ginger Lemon Frizz</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$7.50</span></div>
+            <p>Soda Infused With Fresh Ginger &amp; Lemon With A Hint Of Honey</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Watermelon Lime Cooler</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$9.90</span></div>
+            <p>Refreshing Cool Watermelon Chucks, In A Fresh Sequence Of Lime Juice Rimmed With Lime And Tajin</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-section" id="cocktails" aria-labelledby="cocktails-title">
+    <div class="menu-section-inner">
+      <div class="menu-banner"><span class="menu-num" aria-hidden="true">&ndash; 9 &ndash;</span><h2 id="cocktails-title" class="menu-title">Cocktails</h2></div>
+      <ul class="dish-list">
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Mango Mojito</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.90</span></div>
+            <p>Refreshing Minty Goodness With A Fizzy Finish Of White Rum, Mint Leaves, Lime And Mango Pulp For A Tropical Refreshment</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Desi Whiskey Sour</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.90</span></div>
+            <p>Tangy And Smooth Bourbon Whiskey With A Balance Of Sour Of Sweet Lemon And Lime Juice</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Madras Mule</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.90</span></div>
+            <p>Light, Citrusy And Invigorating Vodka Cocktail</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Beer Mojito</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$14.90</span></div>
+            <p>A Classic Mojito With A Crisp Beer Twist Made Of Rum, Lime &amp; Light Beer</p>
+          </div>
+        </li>
+        <li class="dish">
+          <div class="dish-body">
+            <div class="dish-head"><h3>Mumbai Martini</h3><span class="dish-line" aria-hidden="true"></span><span class="dish-price">$15.90</span></div>
+            <p>Gin Or Vodka Shaken With Saffron And Cardamom-Infused Vermouth</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="menu-empty" id="menu-empty" aria-live="polite"><p>This category is coming soon.</p></section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div class="reveal slide-left">
+      <img src="logo.webp" alt="Eats India - Authentic South Indian Restaurant" width="500" height="400">
+      <p class="footer-about">Authentic South Indian food with a special focus on Kerala flavors. Dine in or take away.</p>
+    </div>
+    <div class="reveal">
+      <h3>Quick links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <h3>Contact us</h3>
+      <ul>
+        <li>Address: <a href="https://www.google.com/maps/search/?api=1&amp;query=Shop+4%2F107+Portrush+Road%2C+Evandale%2C+SA+5069" target="_blank" rel="noopener">Shop 4/107 Portrush Road,<br>Evandale, SA 5069</a></li>
+        <li>Phone: <a href="tel:0870829313">(08) 7082 9313</a></li>
+        <li>Call anytime: <a href="tel:+61405600966">+61 405 600 966</a></li>
+        <li>Email: <a href="mailto:eatsindia@yahoo.com">eatsindia@yahoo.com</a></li>
+      </ul>
+    </div>
+    <div class="reveal slide-right">
+      <h3>Opening hours</h3>
+      <ul>
+        <li>Monday to Friday<br>5.00pm – 10.00pm</li>
+        <li>Saturday and Sunday<br>9.00am – 10.30pm</li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-bottom reveal">&copy; <span id="year">2026</span> Eats India. All rights reserved.</p>
+</footer>
+
+<script>
+var cards=document.querySelectorAll('.card,.reveal,.reveal-fade,.feature,.dish');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2});
+  cards.forEach(function(c){io.observe(c)});
+}else{cards.forEach(function(c){c.classList.add('in')})}
+document.getElementById('year').textContent=new Date().getFullYear();
+var nav=document.querySelector('.nav');
+function onScroll(){nav.classList.toggle('scrolled',window.scrollY>40)}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+const t=document.getElementById('toggle'),l=document.getElementById('links'),ov=document.getElementById('overlay');
+function setMenu(o){l.classList.toggle('open',o);ov.classList.toggle('open',o);t.setAttribute('aria-expanded',o);t.innerHTML=o?'&#10005;':'&#9776;'}
+t.addEventListener('click',()=>setMenu(!l.classList.contains('open')));
+ov.addEventListener('click',()=>setMenu(false));
+l.addEventListener('click',e=>{if(e.target.tagName==='A')setMenu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+var cats=document.querySelectorAll('.menu-cats a'),secs=document.querySelectorAll('.menu-section'),emptyBox=document.getElementById('menu-empty');
+function showCat(id){
+  var found=null;secs.forEach(function(s){if(s.id===id)found=s});
+  var target=found||emptyBox;
+  target.querySelectorAll('.dish').forEach(function(d){d.classList.remove('in')});
+  secs.forEach(function(s){s.classList.toggle('active',s===found)});
+  emptyBox.classList.toggle('active',!found);
+  cats.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id)});
+  void target.offsetWidth;
+  target.querySelectorAll('.dish').forEach(function(d){if(typeof io!=='undefined'&&io)io.observe(d);else d.classList.add('in')});
+}
+cats.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var id=a.getAttribute('href').slice(1);showCat(id);if(history.replaceState)history.replaceState(null,'','#'+id)})});
+var startId=location.hash.slice(1);
+if(!Array.prototype.some.call(cats,function(a){return a.getAttribute('href')==='#'+startId}))startId=cats[0].getAttribute('href').slice(1);
+showCat(startId);
+var catUl=document.querySelector('.menu-cats ul'),catNav=document.querySelector('.menu-cats');
+function updCats(){var m=catUl.scrollWidth-catUl.clientWidth;catNav.classList.toggle('at-end',catUl.scrollLeft>=m-4);catNav.classList.toggle('scrolled',catUl.scrollLeft>4)}
+catUl.addEventListener('scroll',updCats,{passive:true});window.addEventListener('resize',updCats);updCats();
+cats.forEach(function(a){a.addEventListener('click',function(){a.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'})})});
+</script>
+</body>
+</html>
